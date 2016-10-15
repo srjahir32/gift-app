@@ -33,20 +33,17 @@ a {
     padding: auto;
     
 	}
-
-
+ 
+#table-area-2 td{
+	 
+	  padding-left:100px
+	
+}
   img{
       width:100px;
 	  height:auto;
-	  margin-left:100px
-	  
-	
-     }
-	 .relative{
-    width: 100px;
-	margin-left:60px;
-   
-    }
+	  }
+	 
     input[type=text] {
     width: 130px;
     box-sizing: border-box;

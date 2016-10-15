@@ -1,0 +1,79 @@
+
+<html ng-app="" lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Node Sample App</title>
+
+	<!-- CSS -->
+	<!-- load bootstrap and our own personal stylesheet -->
+	<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/superhero/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="../public/js/angular.js"></script>
+
+</head>
+<body>
+<div class="box-header">
+             <div class="text-right">
+		     <a href="http://scotch.io/tutorials/" class="btn btn-link"  style="color:#1A7BE0"><h2>John Doe</h2></a>
+			  <a href="http://scotch.io/tutorials/" class="btn btn-link"  style="color:#1A7BE0"><h2>Friend management</h2></a>
+			   <a href="http://scotch.io/tutorials/" class="btn btn-link"  style="color:#1A7BE0"><h2>Logout</h2></a>
+            </div>
+</div>
+<div class="box" style="padding:100px">
+	
+	<div class="box-body">
+		<div class="row">
+			<div class="col-sm-12">
+				<p><input type="text" name="search" placeholder="Search.." ng-model="test"></p>
+				
+				
+				
+				<div class="table-responsive well no-padding white no-margin">
+				
+                 <h3 class="table-title">{{data.length}} {{settings.plural}} available</h3>
+				 
+				 <table border="2px" color="blue"  class="table table-full m-b-60" id="table-area-1" fsm-big-data="data of data take 30">
+					 <tr>
+                     <td><img class="hero" src="assets/images/logowew.jpg">
+					 </td>
+					 <td><img class="hero" src="assets/images/logoew.jpg"></td>
+		   		     </tr>	
+                     <tr>
+					 <td><input type="checkbox" class="relative" ng-model="item.selected" ng-click="$event.stopPropagation()" /><span>John Doe</span></td>
+					 <td><input type="checkbox" class="relative" ng-model="item.selected" ng-click="$event.stopPropagation()" /><span>John Doe</span></td>
+	     		     </tr>	
+                     <tr>
+                     <td><img class="hero" src="assets/images/logowew.jpg">
+					 </td>
+					 <td><img class="hero" src="assets/images/logoew.jpg"></td>
+		   		     </tr>	
+                     <tr>
+					 <td><input type="checkbox" class="relative" ng-model="item.selected" ng-click="$event.stopPropagation()" /><span>John Doe</span></td>
+					 <td><input type="checkbox" class="relative" ng-model="item.selected" ng-click="$event.stopPropagation()" /><span>John Doe</span></td>
+				   </tr>					   
+				 </table>
+				 
+				 </div>
+		    </div>
+	
+		
+			
+		</div>
+	</div>
+	<div class="butt">
+				
+                    <div class="form-group row" style="margin-left:450px">
+                        <div class="col-sm-12 text-left">
+						 <a menu-link href="/home" name="home">
+             <button type="submit" class="btn btn-primary" id="bt1" style="background-color:#1A7BE0">Import selected friends</button>
+                         </a>
+     					   
+                        </div>
+						
+                    </div>
+ 				</div>
+</div>
+		
+	  </body>
+</html> 
+			

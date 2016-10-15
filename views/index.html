@@ -1,5 +1,6 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html   ng-app="" lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>Node Sample App</title>
@@ -13,20 +14,31 @@
 </head>
 <body>
 
+<div class="box-header">
+             <div class="text-right">
+		     <a href="http://scotch.io/tutorials/" class="btn btn-link"  style="color:#1A7BE0"><h2>Login</h2></a>
+            </div>
+</div>
+
 <div class="container">
 	<div class="jumbotron">
-		<h1>This Is Heroku Awesome!</h1>
-		<p>This is the sample of a tutorial on <a href="http://scotch.io">scotch.io</a></p>
-		<a href="http://scotch.io/tutorials/" class="btn btn-primary btn-lg">View the Tutorial</a>
+		<h2 style="text-align:center">Lorem Ipsum this is some text why you need giftreminder.com</h2>
+		
+		  
 	</div>
-	<div ng-app="">
- 
-<p>Input something in the input box:</p>
-<p>Name : <input type="text" ng-model="name" placeholder="Enter name here"></p>
-<h1>Hello {{name}}</h1>
-
-</div>
-</div>
+	 <div class="col-sm-12 text-center">
+	 <a menu-link href="/home" name="home">
+             <button type="submit" class="btn btn-primary"  style="background-color:#1A7BE0">Add your Facebook friends</button>
+        </a>
+     
+     </div>
 	
+	<div>
+		<p>Input something in the input box:</p>
+		<p>Name : <input type="text" ng-model="name" placeholder="Enter name here"></p>
+		<h1>Hello {{name}}</h1>
+   </div>
+</div>
+
 </body>
 </html>

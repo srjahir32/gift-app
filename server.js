@@ -33,6 +33,12 @@ app.get('/', function(req, res) {
        	// load the single view file (angular will handle the page changes on the front-end)
     	res.sendFile("index.html", {"root": 'views'});
     });
+	
+app.get('/home', function(req, res) {
+       	// load the single view file (angular will handle the page changes on the front-end)
+    	res.sendFile("home.html", {"root": 'views'});
+    });
+	
 // set the view engine to ejs
 //app.set('view engine', 'js');
 
@@ -46,6 +52,7 @@ app.use(express.static(__dirname + '/public'));
 	res.render('index');
 });
 app.use("/public/js", express.static(__dirname + '/public/js'));
+
 app.listen(port, function() {
 	console.log('Our app is running on http://localhost:' + port);
 });

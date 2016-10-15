@@ -24,10 +24,7 @@ app.use(function (req, res, next) {
     next();
 });
 
-router.get('/',function(req,res){
-	  //res.header("Access-Control-Allow-Origin", "*");
-	  res.sendFile("index.html", {"root": 'views'});
-});
+
 
 app.get('/', function(req, res) {
        	// load the single view file (angular will handle the page changes on the front-end)

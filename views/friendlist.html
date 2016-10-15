@@ -24,33 +24,34 @@
 	<div class="box-body">
 		<div class="row">
 			<div class="col-sm-12">
-				<p><input type="text" name="search" placeholder="Search.." ng-model="test"></p>
+				
 				
 				
 				
 				<div class="table-responsive well no-padding white no-margin">
 				
-                 <h3 class="table-title">{{data.length}} {{settings.plural}} available</h3>
+                 <h3 class="table-title">Your Friends</h3>
 				 
 				 <table border="2px" color="blue"  class="table table-full m-b-60" id="table-area-1" fsm-big-data="data of data take 30">
-					 <tr>
-                     <td><img class="hero" src="assets/images/logowew.jpg">
-					 </td>
-					 <td><img class="hero" src="assets/images/logoew.jpg"></td>
-		   		     </tr>	
-                     <tr>
-					 <td><input type="checkbox" class="relative" ng-model="item.selected" ng-click="$event.stopPropagation()" /><span>John Doe</span></td>
-					 <td><input type="checkbox" class="relative" ng-model="item.selected" ng-click="$event.stopPropagation()" /><span>John Doe</span></td>
-	     		     </tr>	
-                     <tr>
-                     <td><img class="hero" src="assets/images/logowew.jpg">
-					 </td>
-					 <td><img class="hero" src="assets/images/logoew.jpg"></td>
-		   		     </tr>	
-                     <tr>
-					 <td><input type="checkbox" class="relative" ng-model="item.selected" ng-click="$event.stopPropagation()" /><span>John Doe</span></td>
-					 <td><input type="checkbox" class="relative" ng-model="item.selected" ng-click="$event.stopPropagation()" /><span>John Doe</span></td>
-				   </tr>					   
+					
+					<thead style="background-color:rgba(255,255,255,0.1)">
+        <tr fsm-sticky-header scroll-body="'#table-area-1'" scroll-stop="64">
+         
+			 <th fsm-sort="id">Friend</th>
+			 <th fsm-sort="firstname">Birthday</th>
+			 <th fsm-sort="lastname">Sex</th>
+			 <th fsm-sort="phone">Interestes</th>
+			 <th fsm-sort="email">Active</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>item.friend</td>
+	        <td>item.Birthday</td>
+            <td>item.Sex</td>
+			<td>item.Interestes</td>
+			<td><input type="checkbox" class="relative" ng-model="item.selected" ng-click="$event.stopPropagation()" /></td>     
+          </tr>		   
 				 </table>
 				 
 				 </div>
@@ -65,7 +66,7 @@
                     <div class="form-group row" style="margin-left:450px">
                         <div class="col-sm-12 text-left">
 						 <a menu-link href="/friendlist" name="friendlist">
-             <button type="submit" class="btn btn-primary" id="bt1" style="background-color:#1A7BE0">Import selected friends</button>
+             <button type="submit" class="btn btn-primary" id="bt1" style="background-color:#1A7BE0">Add new friend..</button>
                          </a>
      					   
                         </div>

@@ -36,13 +36,13 @@ a {
 
 
   img{
-      width:350px;
+      width:100px;
 	  height:auto;
 	  margin-left:100px
 	  
 	
      }
-	  input[type=checkbox] {
+	 .relative{
     width: 100px;
 	margin-left:60px;
    

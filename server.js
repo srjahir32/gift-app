@@ -39,6 +39,10 @@ app.get('/home', function(req, res) {
        	// load the single view file (angular will handle the page changes on the front-end)
     	res.sendFile("friendlist.html", {"root": 'views'});
     });
+	app.get('/frienddetail', function(req, res) {
+       	// load the single view file (angular will handle the page changes on the front-end)
+    	res.sendFile("frienddetail.html", {"root": 'views'});
+    });
 // set the view engine to ejs
 //app.set('view engine', 'js');
 

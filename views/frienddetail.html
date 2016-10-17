@@ -1,5 +1,5 @@
+<html ng-app="myApp" lang="en">
 
-<html ng-app="" lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>Node Sample App</title>
@@ -9,29 +9,41 @@
 	<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/superhero/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/style.css">
 	<script src="../public/js/angular.js"></script>
+	<script src="../assets/js/user.js"></script>
 
 </head>
+
 <body>
-<div class="box-header">
-             <div class="text-right">
-		     <a href="#" class="btn btn-link"  style="color:#1A7BE0"><h2>John Doe</h2></a>
-			  <a href="#" class="btn btn-link"  style="color:#1A7BE0"><h2>Friend management</h2></a>
-			   <a  menu-link href="/" name="index" class="btn btn-link"  style="color:#1A7BE0"><h2>Logout</h2></a>
-            </div>
-</div>
-<div class="box" style="padding:100px">
-	<div class="box-body">
-		<div class="row">
-			<div class="col-sm-4">
-				<div class="table-responsive well no-padding white no-margin">
-                 <h3 class="table-title">John doe(You)</h3>
-				 <p>john@example.com</p>
-				 <img class="hero" style="width:300px;height:auto" src="assets/images/logoew.jpg">
-				 </div>
-		    </div>
+	<div ng-controller="FriendDetailClt">
+		<div class="box-header">
+			<div class="text-right">
+				<a href="#" class="btn btn-link" style="color:#1A7BE0">
+					<h2>{{username}}</h2>
+				</a>
+				<a menu-link href="/friendlist" name="friendlist">
+					<button  class="btn btn-link" style="color:#1A7BE0"><h2>Go to Back</h2></button>
+				</a>
+				<a menu-link href="/" name="index" class="btn btn-link" style="color:#1A7BE0">
+					<h2>Logout</h2>
+				</a>
+			</div>
+		</div>
+		<div class="box" style="padding:100px">
+			<div class="box-body">
+				<div class="row">
+					<div  class="col-lg-4">
+
+						<img class="hero" style="width:300px;height:auto" src="assets/images/">
+					</div>
+					<div class="col-md-8">
+						<h3 class="table-title">John doe(You)</h3>
+						<p>john@example.com</p>
+						<p>18/11/1996</p>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
-</div>
 </body>
-</html> 
-			
+
+</html>

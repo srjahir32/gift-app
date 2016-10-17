@@ -1,5 +1,5 @@
+<html ng-app="myApp" lang="en">
 
-<html ng-app="" lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>Node Sample App</title>
@@ -9,72 +9,69 @@
 	<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/superhero/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/style.css">
 	<script src="../public/js/angular.js"></script>
-
+	<script src="../assets/js/user.js"></script>
 </head>
-<body>
-<div class="box-header">
-             <div class="text-right">
-		     <a href="#" class="btn btn-link"  style="color:#1A7BE0"><h2>John Doe</h2></a>
-			  <a href="#" class="btn btn-link"  style="color:#1A7BE0"><h2>Friend management</h2></a>
-			   <a  menu-link href="/" name="index" class="btn btn-link"  style="color:#1A7BE0"><h2>Logout</h2></a>
-            </div>
-</div>
-<div class="box" style="padding:100px">
-	
-	<div class="box-body">
-		<div class="row">
-			<div class="col-sm-12">
-				
-				
-				
-				
-				<div class="table-responsive well no-padding white no-margin">
-				
-                 <h3 class="table-title">Your Friends</h3>
-				 
-				 <table border="2px" color="blue"  class="table table-full m-b-60" id="table-area-1" fsm-big-data="data of data take 30">
-					
-					<thead style="background-color:rgba(255,255,255,0.1)">
-        <tr fsm-sticky-header scroll-body="'#table-area-1'" scroll-stop="64">
-         
-			 <th fsm-sort="id">Friend</th>
-			 <th fsm-sort="firstname">Birthday</th>
-			 <th fsm-sort="lastname">Sex</th>
-			 <th fsm-sort="phone">Interestes</th>
-			 <th fsm-sort="email">Active</th>
-        </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>item.friend</td>
-	        <td>item.Birthday</td>
-            <td>item.Sex</td>
-			<td>item.Interestes</td>
-			<td><input type="checkbox" class="relative" ng-model="item.selected" ng-click="$event.stopPropagation()" /></td>     
-          </tr>		   
-				 </table>
-				 
-				 </div>
-		    </div>
-	
-		
+
+<body ng-controller="homeCtl">
+	<div class="box-header">
+		<div class="text-right">
+			<a href="#" class="btn btn-link" style="color:#1A7BE0">
+				<h2>{{username}}</h2>
+			</a>
 			
+			<a href="#" class="btn btn-link" style="color:#1A7BE0">
+				<h2>Logout</h2>
+			</a>
 		</div>
 	</div>
-	<div class="butt">
-				
-                    <div class="form-group row" style="margin-left:450px">
-                        <div class="col-sm-12 text-left">
-						 <a menu-link href="/frienddetail" name="frienddetail">
-             <button type="submit" class="btn btn-primary" id="bt1" style="background-color:#1A7BE0">Add new friend..</button>
-                         </a>
-     					   
-                        </div>
+	<div class="box" style="padding:100px">
+
+		<div class="box-body">
+			<div class="row">
+				<div class="col-sm-12">
+
+
+					<div class="table-responsive well no-padding white no-margin">
+
+						<h3 class="table-title">Your Friends</h3>
+
+						<table border="2px" color="blue" class="table table-full m-b-60" id="table-area-1" fsm-big-data="data of data take 30">
+
+							<thead style="background-color:rgba(255,255,255,0.1)">
+								<tr fsm-sticky-header scroll-body="'#table-area-1'" scroll-stop="64">
+									<th fsm-sort="id">Friend</th>
+									<th fsm-sort="Birthday">Birthday</th>
+									<th fsm-sort="Sex">Sex</th>
+									<th fsm-sort="Interestes">Interestes</th>
+									<th fsm-sort="Active">Active</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="(key, item) in listdata" ng-click="viewselectedFriends(item)" >
+									<td>{{item.fname}}</td>
+									<td>{{item.fbirthdate | date:"dd/MMM/yyyy"}}</td>
+									<td>{{item.fsex}}</td>
+									<td>{{item.fname}}</td>
+									<td><input type="checkbox" class="relative" ng-model="item.selected" ng-click="$event.stopPropagation()" /></td>
+								</tr>
+						</table>
 						
-                    </div>
- 				</div>
-</div>
-		
-	  </body>
-</html> 
-			
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="butt">
+
+			<div class="form-group row" style="margin-left:450px">
+				<div class="col-sm-12 text-left">
+					<a menu-link href="/addnewFriend" name="friendlist">
+						<button type="submit" class="btn btn-primary" id="bt1" style="background-color:#1A7BE0" >Add new friend..</button>
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+
+</html>

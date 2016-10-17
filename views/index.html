@@ -1,6 +1,5 @@
+<html ng-app="myApp" lang="en">
 
-<!DOCTYPE html>
-<html   ng-app="" lang="en">
 <head>
 	<meta charset="UTF-8">
 	<title>Node Sample App</title>
@@ -10,31 +9,65 @@
 	<link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/superhero/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/style.css">
 	<script src="../public/js/angular.js"></script>
-
+	<script src="../assets/js/user.js"></script>
 </head>
-<body>
+<body ng-controller="index">
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '347561542256670',
+      xfbml      : true,
+      version    : 'v2.8'
+    });
+    //FB.AppEvents.logPageView();
+   
+   FB.getLoginStatus(function(response) {
 
-<div class="box-header">
-             <div class="text-right">
-		     <a href="#" class="btn btn-link"  style="color:#1A7BE0"><h2>Login</h2></a>
-            </div>
-</div>
+       if (response.status === 'connected') 
+        {
+            console.log();
+            var uid = response.authResponse.userID;
+            var accessToken = response.authResponse.accessToken;
+			sessionStorage.setItem('accessToken',accessToken);
+			window.location.href="/home";
+        } 
+        else if (response.status === 'not_authorized') 
+        {
+            // the user is logged in to Facebook, 
+            // but has not authenticated your app
+            console.log("but has not authenticated your app");
+            //window.location.href="/";
+            return;
+        } 
+        else 
+        {
+            // the user isn't logged in to Facebook.
+            console.log("the user isn't logged in to Facebook.");
+        }
+        });
+  };
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
 
-<div class="container">
-	<div class="jumbotron">
-		<h2 style="text-align:center">Birthday gift reminder</h2>
-		
-		  
+</script>
+<div>
+	<div class="container">
+		<div class="jumbotron" style="margin-top:200px">
+			<h2 style="text-align:center">Birthday gift reminder</h2>
+		</div>
+		<div class="col-sm-12 text-center">
+		 <!--<a href="" ng-click="login();">
+                  <img style="width:500px" class="hero" src="../assets/images/fb.png">
+          </a>-->
+            <div class="fb-login-button" data-href="login()" data-max-rows="1" data-size="xlarge" data-show-faces="false" data-auto-logout-link="false">Login with Facebook</div>
+
+         </div>
 	</div>
-	 <div class="col-sm-12 text-center">
-	 <a menu-link href="/home" name="home">
-             <button type="submit" class="btn btn-primary"  style="background-color:#1A7BE0">Add your Facebook friends</button>
-        </a>
-     
-     </div>
-	
-	
 </div>
-
 </body>
 </html>

@@ -19,7 +19,7 @@ var pool = mysql.createPool({
 exports.MyDetails=function(req,res)
 {
     var accessToken=req.body.accessToken;
-                graph.setAccessToken('EAACEdEose0cBACAZA4fmIcHmAsWafGBEZB7BGEr3dGZCCVLoZAMuYXBdAQ5QFRYOLL7EEp1QKYsQfCprasgIH9g5UNYFdcSLoLa1HU40cElTWFjZCds4KjMk9YzKYw1KxPfms1Kf0bjv1XCo8bWR36x35SjAELL5VCq5e2ILRrQZDZD');
+                graph.setAccessToken(accessToken);
                 graph.batch([
                     {
                         method: "GET",
@@ -67,7 +67,7 @@ exports.MyDetails=function(req,res)
 exports.Frienddata=function(req,res)
 {
      var accessToken=req.body.accessToken;
-    graph.setAccessToken('EAACEdEose0cBACAZA4fmIcHmAsWafGBEZB7BGEr3dGZCCVLoZAMuYXBdAQ5QFRYOLL7EEp1QKYsQfCprasgIH9g5UNYFdcSLoLa1HU40cElTWFjZCds4KjMk9YzKYw1KxPfms1Kf0bjv1XCo8bWR36x35SjAELL5VCq5e2ILRrQZDZD');
+    graph.setAccessToken(accessToken);
     graph.batch([
                                 {
                                     method:"GET",
@@ -130,7 +130,7 @@ exports.SelectedFriend=function(req,res)
 {
     var friendData = req.body;
     var accessToken = req.body.accessToken;
-    graph.setAccessToken('EAACEdEose0cBACAZA4fmIcHmAsWafGBEZB7BGEr3dGZCCVLoZAMuYXBdAQ5QFRYOLL7EEp1QKYsQfCprasgIH9g5UNYFdcSLoLa1HU40cElTWFjZCds4KjMk9YzKYw1KxPfms1Kf0bjv1XCo8bWR36x35SjAELL5VCq5e2ILRrQZDZD');
+    graph.setAccessToken(accessToken);
 
     var data = JSON.stringify(friendData);
     var array = JSON.parse(data);
@@ -293,7 +293,7 @@ exports.PrevselectedFrineds=function(req,res)
 {
     var friendData = req.body;
     var accessToken = req.body.accessToken;
-    graph.setAccessToken('EAACEdEose0cBACAZA4fmIcHmAsWafGBEZB7BGEr3dGZCCVLoZAMuYXBdAQ5QFRYOLL7EEp1QKYsQfCprasgIH9g5UNYFdcSLoLa1HU40cElTWFjZCds4KjMk9YzKYw1KxPfms1Kf0bjv1XCo8bWR36x35SjAELL5VCq5e2ILRrQZDZD');
+    graph.setAccessToken(accessToken);
 
     var data = JSON.stringify(friendData);
     var array = JSON.parse(data);
@@ -384,7 +384,7 @@ exports.user=function(req,res)
 {
     var accessToken=req.body.accessToken;
     
-    graph.setAccessToken('EAACEdEose0cBACAZA4fmIcHmAsWafGBEZB7BGEr3dGZCCVLoZAMuYXBdAQ5QFRYOLL7EEp1QKYsQfCprasgIH9g5UNYFdcSLoLa1HU40cElTWFjZCds4KjMk9YzKYw1KxPfms1Kf0bjv1XCo8bWR36x35SjAELL5VCq5e2ILRrQZDZD');
+    graph.setAccessToken(accessToken);
       
     pool.getConnection(function (err, connection) 
     {

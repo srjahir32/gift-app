@@ -12,7 +12,7 @@
 	<script src="../assets/js/user.js"></script>
 </head>
 
-<body ng-controller="homeCtl">
+<body ng-controller="friendData">
 	<div class="box-header">
 		<div class="text-right">
 			<a href="#" class="btn btn-link" style="color:#1A7BE0">
@@ -42,17 +42,14 @@
 									<th fsm-sort="id">Friend</th>
 									<th fsm-sort="Birthday">Birthday</th>
 									<th fsm-sort="Sex">Sex</th>
-									<th fsm-sort="Interestes">Interestes</th>
 									<th fsm-sort="Active">Active</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr ng-repeat="(key, item) in listdata" ng-click="viewselectedFriends(item)" >
+								<tr ng-repeat="(key, item) in data" ng-click="viewselectedFriends(item)" >
 									<td>{{item.fname}}</td>
-									<td>{{item.fbirthdate | date:"dd/MMM/yyyy"}}</td>
+									<td>{{item.fbirthday | date:"dd/MMM/yyyy"}}</td>
 									<td>{{item.fsex}}</td>
-									<td>{{item.fname}}</td>
-									<td><input type="checkbox" class="relative" ng-model="item.selected" ng-click="$event.stopPropagation()" /></td>
 								</tr>
 						</table>
 						

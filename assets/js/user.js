@@ -1,10 +1,14 @@
 
 var myApp = angular.module('myApp',[]);
 
+
+
 myApp.controller('index', ['$scope','$location','$window', function($scope,$location,$window) {
     
      var accessToken=sessionStorage.getItem('accessToken');
-     
+ 
+
+
     $scope.login=function()
     {
         console.log("login");
@@ -48,14 +52,16 @@ myApp.controller('index', ['$scope','$location','$window', function($scope,$loca
     }
 }]);
 
+    
 
+
+ 
 myApp.controller('homeCtl', ['$scope','$http','$location','$window', 
     function($scope,$http,$location,$window,$rootScope) {
 
-        var accessToken = sessionStorage.getItem('accessToken');
+       var accessToken = sessionStorage.getItem('accessToken');
        
-       var selected=[];
-
+       
         serialize = function (obj) {
               var str = [];
               for (var p in obj)
@@ -67,8 +73,8 @@ myApp.controller('homeCtl', ['$scope','$http','$location','$window',
             var data={
                 accessToken:accessToken
             };
-        $http({
-                url: "http://localhost:8080/getuser", 
+            $http({
+                url: "https://intense-fjord-89814.herokuapp.com/MyDetails", 
                 method: "POST",
                 data: serialize(data),
                 headers: {
@@ -77,38 +83,97 @@ myApp.controller('homeCtl', ['$scope','$http','$location','$window',
             }).then(
                 function successCallback(res) 
                 {
-                        $scope.username=res.data.data[0].uname;
+                        var myId=res.data.data[0].myid;
 
-                        var totalfriend=res.data.data.length;
-                        var FriendData=[];
-                        for(var i=0;i<totalfriend;i++)
-                        {
-                            FriendData.push({
-                                    fUid:res.data.data[i].fUid,
-                                    fbirthdate:res.data.data[i].fbirthdate,
-                                    finterests:res.data.data[i].finterests,
-                                    fname:res.data.data[i].fname,
-                                    fphoto:res.data.data[i].fphoto
-                                });
-                        }
-                        $scope.data = FriendData;
-                        
-                    
-                        
-                        $scope.viewselected=function()
-                        {
-                             selected=$scope.data.filter(
-                                function(item) {
-                                    return item.selected;
-                                });
-                        
-                          /* $scope.listdata=selected;
-                            $scope.viewselectedFriends=function(item)
-                            {  
-                                console.log('item',item);
-                            }*/
-                         }
-                         console.log('selected',selected);         
+                        $scope.username=res.data.data[0].myname;
+                         $http({
+                            url: "https://intense-fjord-89814.herokuapp.com/MyFrineds", 
+                            method: "POST",
+                            data: serialize(data),
+                            headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                            }
+                        }).then(
+                            function successCallback(res) 
+                            {
+                                var totalfriend=res.data.data.length;
+                                var FriendData=[];
+                                for(var i=0;i<totalfriend;i++)
+                                {
+                                    FriendData.push({
+                                            myId:myId,
+                                            Frinedid:res.data.data[i].Frinedid,
+                                            fbirthday:res.data.data[i].fbirthday,
+                                            fname:res.data.data[i].fname,
+                                            fpicture:res.data.data[i].fpicture,
+                                            fgender:res.data.data[i].fgender
+                                        });
+                                }
+                                $scope.data = FriendData;
+                                
+                                
+                                serialize = function (obj) {
+                                    var str = [];
+                                    for (var p in obj)
+                                        if (obj.hasOwnProperty(p)) {
+                                        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                                        }
+                                    return str.join("&");
+                                    };
+                                
+                                var selected=[];
+                                 var newdata=[];
+                                $scope.viewselected=function()
+                                {
+                                     selected=$scope.data.filter(
+                                        function(item) {
+                                            console.log('item.selected',item.selected);
+                                            return item.selected;
+                                            
+                                        });
+                                    
+                                    var totalselected=selected.length;
+                                    console.log("selected",selected);
+                                   
+                                    var array = []
+                                    
+                                   
+                                    for(var i=0;i<totalselected;i++)
+                                    {
+                                        newdata={
+                                            Frinedid:selected[i].Frinedid,
+                                            //Userid:myId
+                                            //Name:selected[i].fname,
+                                            //Birthdate:selected[i].fbirthday,
+                                            //Photoid:selected[i].fpicture
+                                        };
+                                        array.push(serialize(newdata));
+                                    }
+                                 
+                                    console.log('json',array);
+                                    $http({
+                                        url: "https://intense-fjord-89814.herokuapp.com/selectFrineds", 
+                                        method: "POST",
+                                        data: serialize(array),
+                                        headers: {
+                                            'Content-Type': 'application/x-www-form-urlencoded'
+                                        }
+                                    }).then(
+                                        function successCallback(res) 
+                                        {
+                                            console.log('res',res);
+                                        },
+                                        function myError(res) 
+                                        {
+                                            console.log("Error", res);
+                                        });
+                                 }
+                            },
+                            function myError(res) 
+                            {
+                                console.log("Error", res);
+                            });
+                               
                 },
                 function myError(res) 
                 {
@@ -116,10 +181,73 @@ myApp.controller('homeCtl', ['$scope','$http','$location','$window',
                 });
 }]);
 
+myApp.controller('friendData', ['$scope', '$http', '$location', '$window',
+    function ($scope, $http, $location, $window) {
+            var accessToken = sessionStorage.getItem('accessToken');
+      
+            serialize = function (obj) {
+              var str = [];
+              for (var p in obj)
+                if (obj.hasOwnProperty(p)) {
+                  str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                }
+              return str.join("&");
+            };
 
-myApp.controller('FriendDetailClt', ['$scope','$http','$location','$window', 
-         function($scope,$http,$location,$window) {
+            var data={
+                accessToken:accessToken
+            };
+            $http({
+                url: "https://intense-fjord-89814.herokuapp.com/PrevselectedFrineds",
+                method: "POST",
+                data: serialize(data),
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                }
+            }).then(
+                function successCallback(res) 
+                {
+                    console.log("data",res);
+                    var totalfriend=res.data.data.length;
+                    var FriendData=[];
+                    console.log("friend",res.data);
+                    for(var i=0;i<totalfriend;i++)
+                    {
+                        FriendData.push({
+                            fname:res.data.data[i].Name,
+                            fbirthday:res.data.data[i].Birthdate,
+                            fsex:res.data.data[i].sex,
+                            Userid:res.data.data[i].Userid
+                                   });
+                    }
+                    $scope.data = FriendData;
+                    
+                    $scope.viewselectedFriends=function(item)
+                    {
+                        console.log('item',item.Userid);
+                        
+                       sessionStorage.setItem('item',item.Userid);
+                       window.location.href="/frienddetail";
+                      
+                     }
+                },
+                function myError(res) 
+                {
+                    console.log("Error", res);
+                }); 
+    }]);
 
-             $scope.username=$window.sessionStorage.getItem("username");
-
+myApp.controller('FriendDetailClt', ['$scope', '$http', '$location', '$window',
+    function ($scope, $http, $location, $window) {
+    
+      serialize = function (obj) {
+              var str = [];
+              for (var p in obj)
+                if (obj.hasOwnProperty(p)) {
+                  str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                }
+              return str.join("&");
+            };
+             
+      var item = sessionStorage.getItem('item');
 }]);

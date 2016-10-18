@@ -51,12 +51,19 @@ app.get('/home', function(req, res) {
 app.get('/friendlist', function(req, res) {
     	res.sendFile("friendlist.html", {"root": 'views'});
 });
-app.get('/addnewFriend',function(req,res){
+app.get('/frienddetail',function(req,res){
     	res.sendFile("frienddetail.html", {"root": 'views'});
 });
 
-app.post('/getuser',user.user);
-app.post('/getFriend',user.getFriends);
+app.post('/MyDetails',user.MyDetails);
+app.post('/MyFrineds',user.Frienddata);
+app.post('/selectFrineds',user.SelectedFriend);
+app.post('/PrevselectedFrineds',user.PrevselectedFrineds);
+app.post('/OwnDetails',user.OwnDetails);
+//app.post('/getuser',user.user);
+//app.post('/getFriend',user.getFriends);
+
+
 
 app.use(express.static(__dirname + '/public'));
 app.use("/public/js", express.static(__dirname + '/public/js'));

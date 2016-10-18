@@ -13,8 +13,8 @@
 
 </head>
 
-<body>
-	<div ng-controller="FriendDetailClt">
+<body ng-controller="FriendDetailClt">
+	<div >
 		<div class="box-header">
 			<div class="text-right">
 				<a href="#" class="btn btn-link" style="color:#1A7BE0">
@@ -36,9 +36,9 @@
 						<img class="hero" style="width:300px;height:auto" src="assets/images/">
 					</div>
 					<div class="col-md-8">
-						<h3 class="table-title">John doe(You)</h3>
-						<p>john@example.com</p>
-						<p>18/11/1996</p>
+						<h3 class="table-title">{{user}}</h3>
+						<p>{{email}}</p>
+						<p>{{dob | date:"dd/MMM/yyyy"}}</p>
 					</div>
 				</div>
 			</div>

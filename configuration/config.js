@@ -4,8 +4,8 @@ module.exports={
 * It consists of Twitter app information, database information.
 */
 	
-	"facebook_api_key" 		: "347561542256670",
-	"facebook_api_secret"	: "a5a2ca7c4cdd2a32bbf6568ad45ed2c5",
+	"facebook_api_key" 		: "347431945602963",
+	"facebook_api_secret"	: "cbf62b7573c8d6293a956434ab7be1a2",
 	"callback_url"			: "https://intense-fjord-89814.herokuapp.com/",
 	"use_database"			: "true",
 	"host"					: "m7wltxurw8d2n21q.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
